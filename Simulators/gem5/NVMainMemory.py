@@ -26,6 +26,7 @@
 #
 # Authors: Matt Poremba
 #          Tao Zhang
+#          Sam Thomas
 
 import optparse
 import sys
@@ -49,49 +50,6 @@ class NVMainMemory(NVMInterface):
     configparams = Param.String("", "Custom NVmain parameters (defaults to '')")
     configvalues = Param.String("", "Values to NVmain paramters (defaults to '')")
     NVMainWarmUp = Param.Bool(False, "Enable to warm up the internal cache in NVMain")
-
-    #######################################################
-    # Edit (Sam Thomas - 12/3/20):                        #
-    # Config file should match below specified parameters #
-    #######################################################
-
-    write_buffer_size = 128
-    read_buffer_size = 64
-
-    max_pending_writes = 128
-    max_pending_reads = 64
-
-    device_rowbuffer_size = '256B'
-
-    # 8X capacity compared to DDR4 x4 DIMM with 8Gb devices
-    device_size = '512GB'
-    # Mimic 64-bit media agnostic DIMM interface
-    device_bus_width = 64
-    devices_per_rank = 1
-    ranks_per_channel = 1
-    banks_per_rank = 16
-
-    burst_length = 8
-
-    two_cycle_rdwr = True
-
-    # 1200 MHz
-    tCK = '0.833ns'
-
-    tREAD = '150ns'
-    tWRITE = '500ns';
-    tSEND = '14.16ns';
-    tBURST = '3.332ns';
-
-    # Default all bus turnaround and rank bus delay to 2 cycles
-    # With DDR data bus, clock = 1200 MHz = 1.666 ns
-    tWTR = '1.666ns';
-    tRTW = '1.666ns';
-    tCS = '1.666ns'
-
-    #############
-    # end edits #
-    #############
 
 
     def __init__(self, *args, **kwargs):
@@ -137,3 +95,39 @@ class NVMainMemory(NVMInterface):
 
         self.configparams = config_params
         self.configvalues = config_values
+
+class PCM_ISSCC_2012_4GB(NVMainMemory):
+    # Update 12/3 (ST)
+    write_buffer_size = 128
+    read_buffer_size = 64
+
+    max_pending_writes = 128
+    max_pending_reads = 64
+
+    device_rowbuffer_size = '256B'
+
+    # 8X capacity compared to DDR4 x4 DIMM with 8Gb devices
+    device_size = '512GB'
+    # Mimic 64-bit media agnostic DIMM interface
+    device_bus_width = 64
+    devices_per_rank = 1
+    ranks_per_channel = 1
+    banks_per_rank = 16
+
+    burst_length = 8
+
+    two_cycle_rdwr = True
+
+    # 400 MHz
+    tCK = '1.5ns'
+
+    tREAD = '150ns'
+    tWRITE = '500ns';
+    tSEND = '14.16ns';
+    tBURST = '3.332ns';
+
+    # Default all bus turnaround and rank bus delay to 2 cycles
+    # With DDR data bus, clock = 400 MHz = 3 ns
+    tWTR = '3ns';
+    tRTW = '3ns';
+    tCS = '3ns'
