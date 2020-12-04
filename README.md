@@ -60,6 +60,8 @@ This document assumes that the host system is running Ubuntu 20.04.1 on an x86_6
 
 `gem5 $ git apply ../NVmain/patches/gem5/nvmain2-gem5-11688+`
 
+`gem5 $ git apply ../NVmain/patches/gem5/nvmain2-gem5-11689+`
+
 `gem5 $ scons build/ARM/gem5.opt EXTRAS=../NVmain`
 
 `workspace $ echo "Built NVmain and applied to gem5!"`
