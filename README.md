@@ -57,7 +57,7 @@ This document assumes that the host system is running Ubuntu 20.04.1 on an x86_6
 `workspace $ rmdir mount-directory`
 `workspace $ echo "Executable file mounted onto disk image!"`
 9. _Run C/C++ Script on gem5 with Non-Volatile Main Memory_
-`workspace $ gem5/build/ARM/gem5.opt gem5/configs/example/fs.py --disk-image=gem5/dist/disks/ubuntu-18.04-arm64-docker.img --kernel=gem5/dist/binaries/vmlinux.arm64 --nvmain-config=NVmain/Configs/PCM_ISSCC_2012_4GB.config`
+`workspace $ gem5/build/ARM/gem5.opt gem5/configs/example/fs.py --disk-image=gem5/dist/disks/ubuntu-18.04-arm64-docker.img --kernel=gem5/dist/binaries/vmlinux.arm64 --bootloader gem5/dist/binaries/boot.arm64 --mem-type=NVMainMemory --nvmain-config=NVmain/Configs/PCM_ISSCC_2012_4GB.config`
 (gem5 system setup output will be visible with several warnings, this is okay)
 In a new terminal tab
 `workspace $ telnet localhost 3456`
