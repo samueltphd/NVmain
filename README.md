@@ -24,6 +24,7 @@ This document assumes that the host system is running Ubuntu 20.04.1 on an x86_6
 `workspace $ cd gem5`
 
 2. _Compile gem5_
+
 `gem5 $ scons build/ARM/gem5.opt`
 (note: scons will create the "build" repository and its children by running this command - this might take some time)
 
@@ -80,6 +81,7 @@ This document assumes that the host system is running Ubuntu 20.04.1 on an x86_6
 `workspace $ aarch-linux-gnu-gcc ./src/hello_world.c -o hello_world.arm`
 
 `workspace $ echo "ARM executable produced!"`
+
 8. _Mount Executable onto Disk Image_
 
 `workspace $ mkdir mount-directory`
