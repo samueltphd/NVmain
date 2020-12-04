@@ -1,6 +1,7 @@
 ## Running C/C++ Scripts on Non-Volatile Memory Using gem5 and NVmain
 
 **author: Sam Thomas, Brown University**
+**Contact samuel_thomas@brown.edu to report errors**
 
 0. _Workspace Setup_
 This document assumes that the host system is running Ubuntu 20.04.1 on an x86_64 machine and will run an ARM configuration of gem5.
@@ -33,10 +34,11 @@ This document assumes that the host system is running Ubuntu 20.04.1 on an x86_6
 `workspace $ echo "gem5 installed, configured and ready to roll!"`
 4. _Download NVmain_
 `workspace $ git clone https://github.com/samueltphd/NVmain`
-5. _Apply NVmain Patches to gem5_
+5. _Apply NVmain Patches to gem5 and recompile gem5_
 `workspace $ cd gem5`
 `gem5 $ git apply ../NVmain/patches/gem5/nvmain2-gem5-11688+`
-`gem $ cd ..`
+`gem5 $ scons build/ARM/gem5.opt EXTRAS=../NVmain`
+
 `workspace $ echo "Built NVmain and applied to gem5!"`
 6. _Write C/C++ Script_
 `workspace $ mkdir src`
